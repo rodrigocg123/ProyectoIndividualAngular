@@ -1,1 +1,20 @@
-<p>tablaproductos works!</p>
+<table class="table">
+    <thead>
+        <th>Numero de serie</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Precio</th>
+    </thead>
+    <tbody>
+        @for (ordenador of tablaproductos; track ordenador.nserie){
+        <tr>
+            <td>{{ ordenador.nserie }}</td>
+            <td>{{ ordenador.marca }}</td>
+            <td>{{ ordenador.modelo }}</td>
+            <td>{{ ordenador.precio }}</td>
+            <td><input type="button" class="btn btn-danger" value="borrar" (click)="borrar(ordenador.nserie)"></td>
+        </tr>
+        }
+    </tbody>
+
+</table>

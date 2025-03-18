@@ -24,7 +24,7 @@ export class OrdenadorRestService {
   }
   
   public borrar(nserie: number){
-    return this.httpClient.delete<Ordenador>(`http://localhost:8080/webapi/ordenador/${nserie}`);
+    return this.httpClient.delete<Ordenador>(`http://localhost:8080/webapi/ordenador/numeroserie/${nserie}`);
   }
   public buscarUno(){
     

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class OrdenadorRestService {
+  
 
   constructor(private httpClient:HttpClient) { 
     
@@ -19,7 +20,7 @@ export class OrdenadorRestService {
   public insertar (ordenador : Ordenador):Observable<Ordenador>{
     return this.httpClient.post<Ordenador>("http://localhost:8080/webapi/ordenador",ordenador);
   }
-  public seleccionar (nserie: number){
+  public seleccionar (nserie: number):Observable<Ordenador[]>{
     return this.httpClient.get<Ordenador[]>(`http://localhost:8080/webapi/ordenador/${nserie}`);
   }
   
@@ -28,6 +29,9 @@ export class OrdenadorRestService {
   }
   public borrartodos ():Observable<any>{
     return this.httpClient.delete<any>(`http://localhost:8080/webapi/ordenador/borrartodos`)
+  }
+  borrarseleccionados(nserie: number[]):Observable<any> {
+    return this.httpClient.post<any>(`http://localhost:8080/webapi/ordenador/borrarseleccionados`, nserie);
   }
   public buscarUno(nserie:number):Observable<Ordenador>{
     return this.httpClient.get<Ordenador>(`http://localhost:8080/webapi/ordenador/${nserie}`);

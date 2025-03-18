@@ -1,21 +1,23 @@
-<table class="table">
-    <thead>
-        <th>Numero de serie</th>
-        <th>Marca</th>
-        <th>Modelo</th>
-        <th>Precio</th>
-    </thead>
-    <tbody>
-        @for (ordenador of tablaproductos; track ordenador.nserie){
-        <tr>
-            <td>{{ ordenador.nserie }}</td>
-            <td>{{ ordenador.marca }}</td>
-            <td>{{ ordenador.modelo }}</td>
-            <td>{{ ordenador.precio }}</td>
-            <td><input type="button" class="btn btn-danger" value="borrar" (click)="borrar(ordenador.nserie)"></td>
-        </tr>
-        }
-    </tbody>
-    <button routerLink="/formularioproductos" class="btn btn-primary" >Ir al formulario</button>
-
-</table>
+<div>
+    <table class="table-striped table-hover table-bordered border-primary">
+        <thead>
+            <th>Numero de serie</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Precio</th>
+        </thead>
+        <tbody>
+            @for (ordenador of tablaproductos; track ordenador.nserie){
+            <tr>
+                <td>{{ ordenador.nserie }}</td>
+                <td>{{ ordenador.marca }}</td>
+                <td>{{ ordenador.modelo }}</td>
+                <td>{{ ordenador.precio }}</td>
+                <td><input type="button" class="btn btn-danger" value="borrar" (click)="borrar(ordenador.nserie)"></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <button  class="btn btn-danger" (click)="borrartodos()">Borrar todos</button>
+    <button routerLink="/formularioproductos" class="btn btn-primary">Ir al formulario</button>
+</div>

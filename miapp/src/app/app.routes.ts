@@ -3,7 +3,7 @@ import { TablaproductosComponent } from './tablaproductos/tablaproductos.compone
 import { FormularioproductosComponent } from './formularioproductos/formularioproductos.component';
 
 export const routes: Routes = [
-    {path:"tablaproductos",component:TablaproductosComponent},
-    {path:"formularioproductos",component:FormularioproductosComponent},
-    {path:"",component:TablaproductosComponent}
+    { path: "tablaproductos", component: TablaproductosComponent },
+    { path: "formularioproductos", component: FormularioproductosComponent },
+    { path: "", component: TablaproductosComponent }
 ];

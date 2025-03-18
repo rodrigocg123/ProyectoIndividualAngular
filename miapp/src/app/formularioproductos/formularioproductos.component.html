@@ -1,26 +1,25 @@
-<form>
+<form style="text-align: center;" (ngSubmit)="insertar()">
     <div class="mb-3">
         <label for="numeroserie" class="form-label"> NUMERO DE SERIE </label>
-        <p><input type="number" class=""></p>
+        <p><input type="number" class="" name="numeroserie" [(ngModel)]="ordenador.nserie"></p>
     </div>
     <div class="mb-3">
         <label for="Marca" class="form-label">MARCA </label>
-        <p><input type="text" class=""></p>
+        <p><input type="text" class="" name="marca" [(ngModel)]="ordenador.marca"></p>
     </div>
     <div class="mb-3">
         <label for="Precio" class="form-label"> PRECIO</label>
-        <p><input type="number" class=""></p>
+        <p><input type="number" class="" name="precio" [(ngModel)]="ordenador.precio"></p>
 
     </div>
     <div class="mb-3">
         <label for="Modelo" class="form-label"> MODELO</label>
-        <p><input type="text" class=""></p>
+        <p><input type="text" class="" name="modelo" [(ngModel)]="ordenador.modelo"></p>
     </div>
 
     <div>
-        <button type="submit" class="btn btn-success" >Guardar Producto</button>
+        <button type="submit" class="btn btn-success" >Guardar Producto</button><br>
         <button type="reset" class="btn btn-danger">Borrar Todo</button>
+        <button type="submit" class="btn btn-primary" routerLink="/tablaproductos">Volver a la lista</button>
     </div>
-
-
 </form>

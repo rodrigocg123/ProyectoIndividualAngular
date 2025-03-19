@@ -30,8 +30,8 @@ export class OrdenadorRestService {
   public borrartodos ():Observable<any>{
     return this.httpClient.delete<any>(`http://localhost:8080/webapi/ordenador/borrartodos`)
   }
-  borrarseleccionados(nserie: number[]):Observable<any> {
-    return this.httpClient.post<any>(`http://localhost:8080/webapi/ordenador/borrarseleccionados`, nserie);
+  public borrarseleccionados(nserie: number[]){
+    return this.httpClient.post(`http://localhost:8080/webapi/ordenador/borrarseleccionados`, nserie);
   }
   public buscarUno(nserie:number):Observable<Ordenador>{
     return this.httpClient.get<Ordenador>(`http://localhost:8080/webapi/ordenador/${nserie}`);

@@ -11,13 +11,16 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './tablaproductos.component.scss'
 })
 export class TablaproductosComponent {
-  ordenador : Ordenador= {} as Ordenador;
-  tablaproductos: Ordenador[]=[];
+  ordenador: Ordenador = {} as Ordenador;
+  tablaproductos: Ordenador[] = [];
+  ordenadores: any[] = []; // Lista de ordenadores
+  seleccionados: number[] = []; // Lista de números de serie seleccionados
+
 
   constructor(private ordenadorRestService: OrdenadorRestService) {
-    this.loadOrdenadores(); 
+    this.loadOrdenadores();
   }
-  loadOrdenadores() { 
+  loadOrdenadores() {
     this.ordenadorRestService.buscartodos().subscribe((datos) => {
       this.tablaproductos = datos;
     })
@@ -25,26 +28,27 @@ export class TablaproductosComponent {
 
   public borrar(nserie: number) {
     this.ordenadorRestService.borrar(nserie).subscribe(() => {
-      this.loadOrdenadores(); 
+      this.loadOrdenadores();
     });
   }
-  public borrartodos() { 
+  public borrartodos() {
     this.ordenadorRestService.borrartodos().subscribe(() => {
-      this.loadOrdenadores(); 
+      this.loadOrdenadores();
     });
   }
-  public seleccionar(ordenador: Ordenador){ 
-    this.ordenadorRestService.seleccionar(ordenador.nserie).subscribe((datos) => { 
-      this.tablaproductos =datos;
+  public seleccionar(ordenador: Ordenador) {
+    this.ordenadorRestService.seleccionar(ordenador.nserie).subscribe((datos) => {
+      this.tablaproductos = datos;
     });
   }
-  public borrarseleccionados(){
-    const nseriesSeleccionados = this.tablaproductos.filter(ordenador => ordenador.seleccionado)
-    .map(ordenador => ordenador.nserie);
-
-      this.ordenadorRestService.borrarseleccionados(nseriesSeleccionados).subscribe((datos) => {
-        this.loadOrdenadores();
-      });
+  public borrarseleccionados() {
+    this.ordenadorRestService.borrarseleccionados(this.seleccionados).subscribe(() => {
+      // Actualiza la lista de ordenadores después de borrar
+      this.ordenadores = this.ordenadores.filter(
+        (ordenador) => !this.seleccionados.includes(ordenador.nserie)
+      );
+      this.seleccionados = []; // Limpia la selección
+    });
   }
 
 }
